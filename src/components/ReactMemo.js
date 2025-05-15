@@ -1,17 +1,27 @@
-import React from 'react';
+import React, { useState } from 'react';
+import Skill from '../components/Skill';
 
-const TaskList = React.memo(({ todos }) => {
-  console.log('Rendering TaskList...');
+export default function ReactMemo() {
+  const [skill, setSkill] = useState('');
+  const [skills, setSkills] = useState([]);
+
+  const handleSubmit = () => {
+    setSkills([...skills, skill]);
+    setSkill('');
+  };
+
   return (
     <div>
-      <h3>Todo List:</h3>
-      <ul data-test="todo-list">
-        {todos.map((todo, index) => (
-          <li key={index} data-test="todo-item">{todo}</li>
-        ))}
-      </ul>
+      <input
+        data-test="memo-input"
+        type="text"
+        value={skill}
+        onChange={(e) => setSkill(e.target.value)}
+      />
+      <button data-test="submit-button" onClick={handleSubmit}>Add Skill</button>
+      {skills.map((s, index) => (
+        <Skill key={index} skill={s} />
+      ))}
     </div>
   );
-});
-
-export default TaskList;
+}
