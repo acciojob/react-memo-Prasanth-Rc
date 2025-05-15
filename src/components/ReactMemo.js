@@ -1,27 +1,30 @@
 import React, { useState } from 'react';
 import Skill from '../components/Skill';
 
-export default function ReactMemo() {
+const ReactMemo = () => {
   const [skill, setSkill] = useState('');
   const [skills, setSkills] = useState([]);
 
-  const handleSubmit = () => {
-    setSkills([...skills, skill]);
-    setSkill('');
+  const addSkill = () => {
+    if (skill) {
+      setSkills([...skills, skill]);
+      setSkill('');
+    }
   };
 
   return (
     <div>
+      <h2>React Memo Example</h2>
       <input
-        data-test="memo-input"
         type="text"
+        placeholder="Enter skill"
         value={skill}
         onChange={(e) => setSkill(e.target.value)}
       />
-      <button data-test="submit-button" onClick={handleSubmit}>Add Skill</button>
-      {skills.map((s, index) => (
-        <Skill key={index} skill={s} />
-      ))}
+      <button onClick={addSkill}>Add Skill</button>
+      {skills.map((s, i) => <Skill key={i} skill={s} />)}
     </div>
   );
-}
+};
+
+export default ReactMemo;
