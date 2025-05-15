@@ -1,6 +1,6 @@
 import React, { useState, useCallback } from 'react';
-import UseMemo from './components/UseMemo';
-import TaskList from './components/ReactMemo';
+import UseMemo from '../components/UseMemo';
+import TaskList from '../components/ReactMemo';
 
 function App() {
   const [todos, setTodos] = useState([]);
