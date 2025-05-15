@@ -22,7 +22,9 @@ const ReactMemo = () => {
         onChange={(e) => setSkill(e.target.value)}
       />
       <button onClick={addSkill}>Add Skill</button>
-      {skills.map((s, i) => <Skill key={i} skill={s} />)}
+      <div>
+        {skills.map((s, i) => <Skill key={i} skill={s} />)}
+      </div>
     </div>
   );
 };

@@ -15,7 +15,7 @@ const UseMemo = () => {
     <div>
       <h2>Use Memo Example</h2>
       <button onClick={addTodo}>Add todo</button>
-      {renderedTodos}
+      <div>{renderedTodos}</div>
     </div>
   );
 };
